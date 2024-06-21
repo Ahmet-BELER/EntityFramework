@@ -1,0 +1,31 @@
+@model IEnumerable<Ogretmen>
+<table class="table">
+
+    <a href="/Ogretmen/Create" class="btn btn-primary" >  Öğretmen Ekle  </a>
+
+    <thead>
+
+        <tr>
+            <th>Öğretmen Id</th>
+            <th>Öğretmen Ad</th>
+            <th>Öğretmen Soyad</th>
+            <th> Başlama Tarihi</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ogretmen in Model)
+        {
+            <tr>
+                <td>@ogretmen.OgretmenId</td>
+                <td>@ogretmen.Ad</td>
+                <td>@ogretmen.Soyad</td>
+                <td>@(ogretmen.BaslamaTarihi.ToShortDateString())</td>
+                <td>
+                    <a asp-controller="Ogretmen"  asp-action="Edit" asp-route-id = "@ogretmen.OgretmenId"  class="btn btn-sm btn-primary">Detay and Edit</a>
+                    <a asp-controller="Ogretmen" asp-action="Delete" asp-route-id = "@ogretmen.OgretmenId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

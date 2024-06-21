@@ -1,0 +1,47 @@
+@model List<KursKayıt>
+      <a href="/KursKayit/Create" class="btn btn-primary" >  Kayıt Ekle  </a>
+<h2>KursKayit Listesi</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 150px;">@Html.DisplayName("KayıtID")</th>
+            <th>@Html.DisplayName("OgrenciAd")</th>
+            <th>@Html.DisplayName("Kurs")</th>
+            <th style="width: 150px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+         <tr>
+
+            <td>@item.KayıtId.ToString()</td>
+             <td>@item.Ogrenci.AdSoyad</td>
+            <td>@item.Kurs.Baslik</td>
+            <td>
+                                  
+                   
+                   <form asp-controller="KursKayit" asp-action="Delete" method="post">
+                      <a asp-controller="KursKayit"  asp-action="Edit"   class="btn btn-sm btn-primary">Detay and Edit</a>
+                    <input  type="hidden" value="@item.Kurs.KursId" name="id">
+                    <button type="submit" asp-controller="KursKayit" asp-action="Delete"  class="btn btn-sm btn-danger">Delete</button>
+
+                   </form> 
+            </td>
+            </tr>
+
+
+
+        }
+    
+
+    </tbody>
+</table> 
+
+
+
+<td>
+</td>
+</tr>
